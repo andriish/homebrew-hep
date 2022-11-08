@@ -4,7 +4,7 @@ class Whizard < Formula
   url "https://whizard.hepforge.org/downloads/?f=whizard-3.0.3.tar.gz"
   sha256 "20f2269d302fc162a6aed8e781b504ba5112ef0711c078cdb08b293059ed67cf"
   license "GPL-2.0-or-later"
-  revision 1
+  revision 2
 
   livecheck do
     url "https://whizard.hepforge.org/downloads/"
@@ -13,9 +13,9 @@ class Whizard < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 cellar: :any, monterey: "124a47db2f0b5a6baced2a178666ffa0c08f42a7ccf3686ca817ab5e05070e3c"
-    sha256 cellar: :any, big_sur:  "938cd25668912373ea0f0389fd8b84deae7ff6576e0a4db0554d0cdb3992cce6"
-    sha256 cellar: :any, catalina: "f99730f905b29ecdbfc0490a399a38a692b86c3d15315837209582275eada4ab"
+    sha256 cellar: :any, monterey: "a9f88af7177423393fc6dec09ba8e7ce9aef2b0c81672dd4ae9749a6eb68e59a"
+    sha256 cellar: :any, big_sur:  "63dc8f6c8f2acaee3234937f9fd5387ef4f51dc1e08f50346267424fb056bd97"
+    sha256 cellar: :any, catalina: "54ca21056852c12c546d7609ed25dbdf1e26aacb47c3186bcc2b42eafc28931e"
   end
 
   depends_on "gcc" # for gfortran

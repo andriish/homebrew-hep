@@ -4,6 +4,7 @@ class Mcfm < Formula
   url "https://mcfm.fnal.gov/downloads/MCFM-10.2.1.tar.gz"
   sha256 "5b97dd90159efcef227420b49e8eb53b7f1ee0af8d5a6bf8595a29c320afe2dc"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url :homepage
@@ -12,9 +13,9 @@ class Mcfm < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 cellar: :any, monterey: "ea453499fb8feb38613a556ffa80ca7b137f1fa86a4516e603ca921e07a5d6a2"
-    sha256 cellar: :any, big_sur:  "de08ad6a1fba5b8c7e82fbe7024dc4b1de4697dd6f4e576fd720dee893881ec1"
-    sha256 cellar: :any, catalina: "7ca2fd32f3a17b21ed4ea9e27a441c7f7ff53f0670349a0a0b21934745f2a52c"
+    sha256 cellar: :any, monterey: "7791a379aa3f245b8b61f6606f42a214dc35d91a1808eae3c87cbfd448f70e41"
+    sha256 cellar: :any, big_sur:  "00311d6c6d3edecc4a726a1dbd36000e4eb2de5af7d57f8e4ee1e7c27e54e1ad"
+    sha256 cellar: :any, catalina: "213654abe451b0bbfcdfa28db32097dd29afa46c81d4adda4d21ff946aa88c5b"
   end
 
   option "with-nnlo-vv", "Build NNLO diboson processes (slow compilation)"

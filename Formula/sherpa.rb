@@ -4,6 +4,7 @@ class Sherpa < Formula
   url "https://sherpa.hepforge.org/downloads/?f=SHERPA-MC-2.2.12.tar.gz"
   sha256 "529464775ca828b9dc965110526f340de743b6003c1e6f8abe2fc14550aed001"
   license "GPL-2.0-only"
+  revision 1
 
   livecheck do
     url "https://sherpa.hepforge.org/downloads"
@@ -12,9 +13,9 @@ class Sherpa < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 monterey: "c51468fa8f5579c92eb40a0e83091ae70f335dda7c2d38e1e61b1a703a61159b"
-    sha256 big_sur:  "88502aec643f4dd47e57eedc43533d3eac5468caa8032154178142af6e8063cf"
-    sha256 catalina: "ea34fbb85c736eaefd9a31103f35c2d71e675c94354e19b4b72ef3c39db3752d"
+    sha256 monterey: "1f10e78f48ea59b6a26059b3b62fb1545409abc16f7720048eebba3c294e926a"
+    sha256 big_sur:  "27546588feb69b4837e0fc6d3cb9a3c9121b279b3b915f7c219b58f17b66b182"
+    sha256 catalina: "e4ec4c4918d6feb30d9c3e2bf271f672500bd0005f79dcb9b6f41240d651e766"
   end
 
   depends_on "autoconf" => :build
