@@ -15,8 +15,7 @@ class Cernlib < Formula
     mkdir "../build" do
       args = %W[
         -S
-        ../#{version}/src
-        -DCMAKE_CXX_COMPILER=g++-#{Formula["gcc"].version_suffix}
+        ../cernlib-cernlib-#{version}-free/
         -DCMAKE_Fortran_COMPILER=gfortran-#{Formula["gcc"].version_suffix}
         -DCMAKE_C_COMPILER=gcc-#{Formula["gcc"].version_suffix}
         -DCMAKE_INSTALL_PREFIX=#{prefix}
