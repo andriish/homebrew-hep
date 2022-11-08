@@ -1,5 +1,4 @@
-class cernlib < Formula
-  desc "Cernlib"
+class Cernlib < Formula
   desc "CERN library"
   homepage "https://cernlib.web.cern.ch"
   url "https://cernlib.web.cern.ch/cernlib/download/2022_source/tar/cernlib-2022.11.08.0-free.tar.gz"
@@ -9,13 +8,13 @@ class cernlib < Formula
 
   depends_on "cmake" => [:build]
   depends_on "gcc" => [:build]
-  depends_on "coreutils" 
-  depends_on "openmotif"
+  depends_on "coreutils"
   depends_on "libXaw"
+  depends_on "openmotif"
   def install
     mkdir "../build" do
       args = %W[
-        -S 
+        -S
         ../#{version}/src
         -DCMAKE_CXX_COMPILER=g++-#{Formula["gcc"].version_suffix}
         -DCMAKE_Fortran_COMPILER=gfortran-#{Formula["gcc"].version_suffix}
@@ -25,8 +24,11 @@ class cernlib < Formula
         -DMOTIF_LIBRARIES=#{Formula["openmotif"].lib}/libXm.dylib
       ]
       system "cmake", "-B", ".", *args
-      system "cmake","--build", "."
-      system "cmake", "--install","."
+      system "cmake", "--build", "."
+      system "cmake", "--install", "."
     end
+  end
+  test do
+    system "ctest", "."
   end
 end
