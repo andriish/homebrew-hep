@@ -13,8 +13,9 @@ class Sherpa < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 monterey: "060c750c2cb885e8c8998dc572dacbb8518c75f812984626d19b11110d4f1c0c"
-    sha256 big_sur:  "b47aa1f089999adb58193a5f3b09d5f9f7c1775fd5c7d081fc78e768cfd49df9"
+    rebuild 1
+    sha256 ventura:  "cd12900e0c42f849a8ee06ea87ff44fa95c7f0919551c14a8412631c2277e54f"
+    sha256 monterey: "907a0c96caa3fe900787c1c41f320d93861b1ade57c6afa8fab5d154c313261b"
   end
 
   depends_on "autoconf" => :build
@@ -24,6 +25,7 @@ class Sherpa < Formula
   depends_on "hepmc3"  => :recommended
   depends_on "lhapdf"  => :recommended
   depends_on "rivet"   => :recommended
+  depends_on "hepmc2"  => :optional
   depends_on "root"    => :optional
 
   def install
@@ -36,6 +38,7 @@ class Sherpa < Formula
     ]
 
     args << "--enable-fastjet=#{Formula["fastjet"].opt_prefix}" if build.with? "fastjet"
+    args << "--enable-hepmc2=#{Formula["hepmc2"].opt_prefix}"   if build.with? "hepmc2"
     args << "--enable-hepmc3=#{Formula["hepmc3"].opt_prefix}"   if build.with? "hepmc3"
     args << "--enable-lhapdf=#{Formula["lhapdf"].opt_prefix}"   if build.with? "lhapdf"
     args << "--enable-rivet=#{Formula["rivet"].opt_prefix}"     if build.with? "rivet"
@@ -72,6 +75,14 @@ class Sherpa < Formula
       }(mi)
     EOS
 
-    system bin/"Sherpa", "-p", testpath, "-L", testpath, "-e", "100"
+    system bin/"Sherpa", "-e", "100"
+    if build.with? "hepmc2"
+      system bin/"Sherpa", "-e", "100", "EVENT_OUTPUT=HepMC_GenEvent[events]"
+      assert_predicate testpath/"events.hepmc2g", :exist?
+    end
+    if build.with? "hepmc3"
+      system bin/"Sherpa", "-e", "100", "EVENT_OUTPUT=HepMC3_GenEvent[events]"
+      assert_predicate testpath/"events", :exist?
+    end
   end
 end

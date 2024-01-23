@@ -6,7 +6,7 @@ class Herwig < Formula
   url "https://herwig.hepforge.org/downloads/Herwig-7.2.3.tar.bz2"
   sha256 "5599899379b01b09e331a2426d78d39b7f6ec126db2543e9d340aefe6aa50f84"
   license "GPL-3.0-only"
-  revision 1
+  revision 2
 
   livecheck do
     url "https://herwig.hepforge.org/downloads"
@@ -15,9 +15,8 @@ class Herwig < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 monterey: "a9e34d09a603eab00b5ba4f7482c13b2d5d53d5b5d589d2ba1515b0eba6007c3"
-    sha256 big_sur:  "a6a8158cf8364924d862f784f22ec5482caf79695624f8385dea588695eaa36d"
-    sha256 catalina: "1f606460720c72877d5dd85ad7ea64fdf375ef199e65d428edeb202000bb947d"
+    sha256 ventura:  "9cbb35da540ff13697bc7abb14e44838618a74724e94bef69b706e7a96022137"
+    sha256 monterey: "caa9a4f1671723da6a2c49045036dce82eca6ff1335c9d76a93fc260eb975fb9"
   end
 
   head do
@@ -79,7 +78,7 @@ index 8e7e3eb..3be587e 100644
 +++ b/src/defaults/decayers.in.in
 @@ -24505,4 +24505,4 @@ newdef RadiativeHyperon:Ntry 500
  newdef RadiativeHyperon:Points 10000
- newdef RadiativeHyperon:GenerateIntermediates 0
+ newdef RadiativeHyperon:GenerateIntermediates 0 
 
 -read EvtGenDecayer.in
 +@LOAD_EVTGEN_DECAYER@

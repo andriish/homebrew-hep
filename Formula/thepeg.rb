@@ -1,10 +1,9 @@
 class Thepeg < Formula
   desc "Toolkit for high energy physics event generation"
   homepage "https://herwig.hepforge.org"
-  url "https://thepeg.hepforge.org/downloads/ThePEG-2.2.3.tar.bz2"
-  sha256 "f21473197a761fc32917b08a8d24d2bfaf93ff57f3441fd605da99ac9de5d50b"
+  url "https://thepeg.hepforge.org/downloads/ThePEG-2.3.0.tar.bz2"
+  sha256 "deec8f22e89bb1a3f31b3b84e8feddf59a69845c9d33fba718f5599ce4a6ae9d"
   license "GPL-3.0-only"
-  revision 1
 
   livecheck do
     url "https://thepeg.hepforge.org/downloads"
@@ -13,9 +12,8 @@ class Thepeg < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 monterey: "4424afa6403ce5a6b0fd375aaddf41125dbfb900450517625fb9a8493e7b860d"
-    sha256 big_sur:  "3f53920a7d66478c3c5e324848730722b0c93d1439fac79df0343ba565c3daf3"
-    sha256 catalina: "f3c778fd9e7502ddc3d622959b2d9c9008a281ac829123ac86ce11710db4e54c"
+    sha256 ventura:  "d1b95d2a0911425ff1372c3d54074b329420c00ba1bc7e75a03cf3cf97756e20"
+    sha256 monterey: "3966dc8e3377fa1e2f87ae967e3522b5e6c0623d4f6e40ebe0bf4f49ff74e880"
   end
 
   head do

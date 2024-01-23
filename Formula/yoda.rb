@@ -3,8 +3,8 @@ class Yoda < Formula
 
   desc "Yet more Objects for Data Analysis"
   homepage "https://yoda.hepforge.org"
-  url "https://yoda.hepforge.org/downloads/?f=YODA-1.9.7.tar.gz"
-  sha256 "abff3e56bc360e38b2dd32d49bd962d6e773e97da1d50140ac4703daa1d51c8b"
+  url "https://yoda.hepforge.org/downloads/?f=YODA-1.9.9.tar.gz"
+  sha256 "b95398fac39f46ff73fb507c4739b4248f9689462d5b1c057caf7f3faffc1eb2"
   license "GPL-3.0-only"
 
   livecheck do
@@ -14,9 +14,7 @@ class Yoda < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 cellar: :any, monterey: "ed70e1312d864f0a671a9d7c2767a22771d9cc86b8342f307a71b030711a4a26"
-    sha256 cellar: :any, big_sur:  "acba1f871ace2cb3e0dc2c9f8ff70b901c565b360b79ff9c53fc15e3fbb8205f"
-    sha256 cellar: :any, catalina: "c7fc2ec2794cab2e241fdfd585e979da723c7c6147da9ddf735cec860fc401c1"
+    sha256 monterey: "984f157a7463c600e52309b9589b1cc0649f699a6da72a6670688d67174ee931"
   end
 
   head do
@@ -31,8 +29,13 @@ class Yoda < Formula
   option "with-test", "Test during installation"
 
   depends_on "python@3.10"
-  depends_on "numpy" => :optional
   depends_on "root" => :optional
+
+  if build.with? "test"
+    depends_on "numpy"
+  else
+    depends_on "numpy" => :optional
+  end
 
   patch :DATA
 
@@ -41,8 +44,6 @@ class Yoda < Formula
   end
 
   def install
-    ENV.prepend_path "PATH", Formula["python@3.10"].opt_libexec/"bin"
-
     args = %W[
       --disable-debug
       --disable-dependency-tracking
@@ -54,11 +55,15 @@ class Yoda < Formula
       ENV.append "PYTHONPATH", Formula["root"].opt_prefix/"lib/root" if build.with? "test"
     end
 
+    # yoda attempts to install to HOMEBREW_PREFIX/lib/pythonX.Y/site-packages
+    prefix_site_packages = prefix/Language::Python.site_packages(python)
+    inreplace "configure", /(?<!#)YODA_PYTHONPATH=.+/, "YODA_PYTHONPATH=#{prefix_site_packages}"
+
     system "autoreconf", "-i" if build.head?
     system "./configure", *args
     system "make"
-    system "make", "check" if build.with? "test"
     system "make", "install"
+    system "make", "check" if build.with? "test"
 
     rewrite_shebang detected_python_shebang, *bin.children
   end

@@ -14,9 +14,9 @@ class Lhapdf < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 monterey: "8ac041f9166e92beaf547c36d654cd76ecdccb82985cf1a9207d9926181c1ef5"
-    sha256 big_sur:  "53bc6ec90e5134be7e5b9f9d92e41502f4b6193586e1af34402054e0efdb9221"
-    sha256 catalina: "0c69beafb2ca891b920ed07937368b5623c88d07d982f208040c2a8866573260"
+    rebuild 1
+    sha256 ventura:  "9bb49ac1a0770fad48aa408344b4d218d302e99401cad6f33549c28264240cdd"
+    sha256 monterey: "072b262cf7b118116ee1602ba36f493d4c88296e87dbd7ae0b82b21996c3882a"
   end
 
   head do

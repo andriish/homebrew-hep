@@ -1,8 +1,8 @@
 class Whizard < Formula
   desc "Monte Carlo event generator"
   homepage "https://whizard.hepforge.org"
-  url "https://whizard.hepforge.org/downloads/?f=whizard-3.1.2.tar.gz"
-  sha256 "4f706f8ef02a580ae4dba867828691dfe0b3f9f9b8982b617af72eb8cd4c6fa3"
+  url "https://whizard.hepforge.org/downloads/?f=whizard-3.1.4.tar.gz"
+  sha256 "9da9805251d786adaf4ad5a112f9c4ee61d515778af0d2623d6460c3f1f900cd"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -12,8 +12,8 @@ class Whizard < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/davidchall/hep"
-    sha256 cellar: :any, monterey: "a6f50e12d6649c81f49876ee7952362a3d3b7c862e8f08d7c804367583c1b4d5"
-    sha256 cellar: :any, big_sur:  "ab3fed222d8f69319ae3e727260889dc6c61e5122d3919f2b003b08e69999750"
+    sha256 cellar: :any, ventura:  "eef9314bd7e498f2aa967162f8d0875bf582e9a2e410e29233f5afdd7cfff5e9"
+    sha256 cellar: :any, monterey: "a714990fa8abe2fbaaa5c3e751ed54eaac69cbf5fa5d118e187163a10c8d3ead"
   end
 
   depends_on "gcc" # for gfortran
